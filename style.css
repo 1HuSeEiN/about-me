@@ -5,9 +5,8 @@
 }
 
 body {
-	background-color: #28223F;
+	background-color: #ffffff;
 	font-family: Montserrat, sans-serif;
-	
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -16,6 +15,7 @@ body {
 	min-height: 100vh;
 	margin: 0;
 }
+
 
 h3 {
 	margin: 10px 0;
@@ -31,79 +31,136 @@ p {
 	line-height: 21px;
 }
 
-.card-container {
-	background-color: #231E39;
-	border-radius: 5px;
-	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
-	color: #B3B8CD;
-	padding-top: 30px;
-	position: relative;
-	width: 350px;
-	max-width: 100%;
-	text-align: center;
+@keyframes shadowMove {
+    0% {
+        box-shadow: 0px 15px 25px rgba(255, 0, 255, 0.5); /* بداية اللون */
+    }
+    50% {
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.5); /* منتصف الحركة مع تغيير اللون */
+    }
+    100% {
+        box-shadow: 0px 15px 25px rgba(255, 0, 255, 0.5); /* العودة إلى اللون الأصلي */
+    }
 }
+
+.card-container {
+    background-color: #101010;
+    border-radius: 5px;
+    box-shadow: 0px 15px 25px rgba(255, 0, 255, 0.5); /* الظل الأولي */
+    color: #ffffff;
+    padding-top: 30px;
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    text-align: center;
+    animation: shadowMove 3s infinite; /* تأثير الحركة المستمر */
+}
+
 
 .card-container .pro {
-	color: #231E39;
-	background-color: #FEBB0B;
-	border-radius: 3px;
-	font-size: 14px;
+	color: #391e1e;
+	background-color: #ff00ff;
+	border-radius: 4px;
+	font-size: 13px;
 	font-weight: bold;
-	padding: 3px 7px;
+	padding: 4px 7px;
 	position: absolute;
-	top: 30px;
-	left: 30px;
+	top: 20px;
+	left: 20px;
 }
+
 
 .card-container .round {
-	border: 1px solid #03BFCB;
-	border-radius: 50%;
-	padding: 7px;
+    border: 5px solid #ff00ff;
+    border-radius: 50%;
+    padding: 7px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* إضافة انتقال سلس */
 }
+
+.card-container .round:hover {
+    transform: scale(1.1); /* تكبير الصورة عند التمرير */
+    box-shadow: 0px 0px 15px rgba(255, 0, 255, 0.7); /* إضافة تأثير الظل عند التمرير */
+}
+
+
 
 button.primary {
-
-  justify-content: space-between;
-	background-color: #03BFCB;
-	border: 1px solid #03BFCB;
-	border-radius: 3px;
-	color: #231E39;
-	font-family: Montserrat, sans-serif;
-	font-weight: 500;
-	padding: 10px 25px;
-	transition: 0.5s;
+    justify-content: space-between;
+    background-color: #03BFCB;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    color: #231E39;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    padding: 10px 25px;
+    transition: 0.3s ease, transform 0.3s ease; /* إضافة انتقال مع تغيير الحجم */
+    cursor: pointer; /* تغيير شكل المؤشر عند التمرير */
 }
-button.primary.ghost:hover {
-	color: white;
-	background: black;
-  }
+
+button.primary:hover {
+    background-color: #028D9E; /* تغيير اللون عند التمرير */
+    transform: scale(1.05); /* تكبير الزر قليلاً */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* إضافة تأثير الظل */
+}
+
 button.primary.ghost {
-  justify-content: space-between;
-	background-color: transparent;
-	color: #02899C;
+    justify-content: space-between;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #ffffff;
+    transition: 0.3s ease, transform 0.3s ease; /* إضافة انتقال */
+}
+
+button.primary.ghost:hover {
+    color: #03BFCB; /* تغيير لون النص عند التمرير */
+    background-color: rgba(3, 191, 203, 0.1); /* إضافة تأثير خلفية خفيف */
+    transform: scale(1.05); /* تكبير الزر قليلاً */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* تأثير الظل عند التمرير */
 }
 
 .skills {
-	background-color: #1F1A36;
-	text-align: left;
-	padding: 15px;
-	margin-top: 30px;
+    background-color: #1d1c1c;
+    text-align: left;
+    padding: 15px;
+    margin-top: 30px;
+    border-radius: 5px; /* إضافة حواف مستديرة */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل لإبراز العنصر */
+    transition: 0.5s ease-in-out; /* انتقال سلس */
+}
+
+.skills:hover {
+    transform: scale(1.05); /* تكبير الكارد عند التمرير */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* زيادة تأثير الظل عند التمرير */
 }
 
 .skills ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .skills ul li {
-	border: 1px solid #2D2747;
-	border-radius: 2px;
-	display: inline-block;
-	font-size: 12px;
-	margin: 0 7px 7px 0;
-	padding: 7px;
+    border: 1px solid #ffffff; /* تغيير اللون إلى الأبيض */
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 7px 7px 0;
+    padding: 7px;
+    background-color: #333333; /* خلفية داكنة لكل عنصر */
+    color: #ffffff; /* النص باللون الأبيض */
+    transition: 0.3s ease; /* إضافة انتقال للتأثير */
 }
+
+.skills ul li:hover {
+    background-color: #03BFCB; /* تغيير اللون عند التمرير */
+    color: #1d1c1c; /* تغيير لون النص عند التمرير */
+    transform: translateY(-3px); /* تحريك العنصر للأعلى قليلاً */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل بسيط عند التمرير */
+}
+
 
 footer {
     background-color: #222;
@@ -137,10 +194,20 @@ footer a {
   min-width: 100%;
   z-index: -1;
 }
-.projects{
-	position: absolute;
-	box-shadow: 0px 35px rgb(255, 0, 0);
-	background: #1F1A36;
-	top: 50%;
-	left: 50%;
+
+#background-video {
+    position: fixed; /* Keeps the video in place */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire screen */
+    z-index: -1; /* Puts the video behind your content */
+}
+
+.content {
+    position: relative;
+    z-index: 1; /* Ensures content is on top of the video */
+    padding: 20px;
+    color: white; /* You can change text color as needed */
 }
