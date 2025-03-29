@@ -1,270 +1,188 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
 * {
-	box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-	background-color: #ffffff;
-	font-family: Montserrat, sans-serif;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-
-	min-height: 100vh;
-	margin: 0;
+    background: #f2f3f7;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+/* ----------------- Card ----------------- */
+
+.card-container {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    width: 400px;
+    max-width: 100%;
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+    text-align: center;
+    position: relative;
+    transition: 0.4s;
+}
+
+.card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 24px #d1d9e6, -8px -8px 24px #ffffff;
+}
+
+/* ----------------- Badge ----------------- */
+
+.card-container .pro {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 15px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ----------------- Avatar ----------------- */
+
+.card-container .round {
+    border: 4px solid #e0e5ec;
+    border-radius: 50%;
+    padding: 5px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: 0.4s;
+}
+
+.card-container .round:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(106,17,203,0.4);
+}
+
+/* ----------------- Text ----------------- */
 
 h3 {
-	margin: 10px 0;
+    margin: 15px 0 5px 0;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 h6 {
-	margin: 5px 0;
-	text-transform: uppercase;
+    text-transform: uppercase;
+    color: #888;
+    font-size: 12px;
+    margin-bottom: 10px;
 }
 
 p {
-	font-size: 14px;
-	line-height: 21px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
 }
 
-
-
-.card-container {
-    background-color: #101010;
-    border-radius: 5px;
-    color: #ffffff;
-    padding-top: 30px;
-    position: relative;
-    width: 400px;
-    max-width: 100%;
-    text-align: center;
-}
-
-
-
-.card-container .pro {
-	color: #391e1e;
-	background-color: #ff00ff;
-	border-radius: 4px;
-	font-size: 13px;
-	font-weight: bold;
-	padding: 4px 7px;
-	position: absolute;
-	top: 20px;
-	left: 20px;
-}
-
-
-@keyframes pulseEffect {
-    0% {
-        transform: scale(1);
-        box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.5);
-        border-color: #ff00ff;
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0px 0px 20px rgba(0, 255, 255, 0.8);
-        border-color: #00ffff; /* تغيير اللون إلى الأزرق الفاتح */
-    }
-    75% {
-        transform: scale(1);
-        box-shadow: 0px 0px 10px rgb(255, 94, 0);
-        border-color: #ff7300; /* العودة إلى اللون الوردي */
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.5);
-        border-color: #ff00ff;
-    }
-}
-
-.card-container .round {
-    border: 5px solid #ff00ff;
-    border-radius: 50%;
-    padding: 7px;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    animation: pulseEffect 3s infinite ease-in-out; /* حركة النبض */
-}
-
-
-
+/* ----------------- Buttons ----------------- */
 
 button.primary {
-    justify-content: space-between;
-    background-color: #03BFCB;
-    border: 1px solid #ffffff;
-    border-radius: 3px;
-    color: #231E39;
-    font-family: Montserrat, sans-serif;
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    color: #fff;
     font-weight: 500;
     padding: 10px 25px;
-    transition: 0.3s ease, transform 0.3s ease; /* إضافة انتقال مع تغيير الحجم */
-    cursor: pointer; /* تغيير شكل المؤشر عند التمرير */
+    border-radius: 30px;
+    margin: 10px 5px;
+    cursor: pointer;
+    transition: 0.4s;
+    width: 100%;
+    max-width: 220px;
 }
 
 button.primary:hover {
-    background-color: #028D9E; /* تغيير اللون عند التمرير */
-    transform: scale(1.05); /* تكبير الزر قليلاً */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* إضافة تأثير الظل */
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(106,17,203,0.4);
 }
 
 button.primary.ghost {
-    justify-content: space-between;
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #ffffff;
-    transition: 0.3s ease, transform 0.3s ease; /* إضافة انتقال */
+    background: transparent;
+    color: #6a11cb;
+    border: 1px solid #6a11cb;
+    padding: 10px 25px;
+    border-radius: 30px;
+    transition: 0.4s;
 }
 
 button.primary.ghost:hover {
-    color: #03BFCB; /* تغيير لون النص عند التمرير */
-    background-color: rgba(3, 191, 203, 0.1); /* إضافة تأثير خلفية خفيف */
-    transform: scale(1.05); /* تكبير الزر قليلاً */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* تأثير الظل عند التمرير */
+    background: #6a11cb;
+    color: #fff;
+    transform: scale(1.05);
 }
 
+/* ----------------- Skills ----------------- */
+
 .skills {
-    background-color: #1d1c1c;
-    text-align: left;
-    padding: 15px;
-    margin-top: 30px;
-    border-radius: 5px; /* إضافة حواف مستديرة */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل لإبراز العنصر */
-    transition: 0.5s ease-in-out; /* انتقال سلس */
+    background: #f0f0f3;
+    border-radius: 15px;
+    margin-top: 25px;
+    padding: 20px;
+    box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
+    transition: 0.4s;
 }
 
 .skills:hover {
-    transform: scale(1.05); /* تكبير الكارد عند التمرير */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* زيادة تأثير الظل عند التمرير */
+    box-shadow: inset 4px 4px 10px #d1d9e6, inset -4px -4px 10px #ffffff;
 }
 
 .skills ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
     padding: 0;
 }
 
 .skills ul li {
-    border: 1px solid #ffffff; /* تغيير اللون إلى الأبيض */
-    border-radius: 2px;
     display: inline-block;
-    font-size: 12px;
-    margin: 0 7px 7px 0;
-    padding: 7px;
-    background-color: #333333; /* خلفية داكنة لكل عنصر */
-    color: #ffffff; /* النص باللون الأبيض */
-    transition: 0.3s ease; /* إضافة انتقال للتأثير */
+    margin: 5px;
+    padding: 8px 15px;
+    background: #ffffff;
+    border-radius: 20px;
+    font-size: 13px;
+    box-shadow: 3px 3px 6px #d1d9e6, -3px -3px 6px #ffffff;
 }
 
-.skills ul li:hover {
-    background-color: #03BFCB; /* تغيير اللون عند التمرير */
-    color: #1d1c1c; /* تغيير لون النص عند التمرير */
-    transform: translateY(-3px); /* تحريك العنصر للأعلى قليلاً */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل بسيط عند التمرير */
-}
+/* ----------------- Responsive ----------------- */
 
+@media (max-width: 480px) {
+    .card-container {
+        padding: 25px 20px;
+    }
 
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
+    .card-container .round {
+        width: 120px;
+        height: 120px;
+    }
 
-footer p {
-    margin: 10px 0;
-}
+    button.primary,
+    button.primary.ghost {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
 
-footer i {
-    color: red;
-}
+    .skills ul li {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
 
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
-}
-.back-v{
-  position:absolute;
-  height: 1500px;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  z-index: -1;
-}
-/* إنشاء الخلفية المتحركة */
-.background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(-45deg, #ff00ff, #ff6600, #0066ff, #00ffcc);
-    background-size: 400% 400%;
-    animation: gradientAnimation 8s ease infinite;
-    z-index: -1;
-}
+    h3 {
+        font-size: 18px;
+    }
 
-/* حركة تدرج الألوان */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* تأثير الجسيمات اللامعة */
-.background::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 10%, transparent 80%);
-    opacity: 0.6;
-    animation: glowAnimation 6s linear infinite alternate;
-}
-
-@keyframes glowAnimation {
-    0% { opacity: 0.3; }
-    100% { opacity: 0.6; }
-}
-
-/* ضبط النصوص */
-.content {
-    text-align: center;
-    color: white;
-    z-index: 1;
-    animation: fadeIn 2s ease-in-out;
-}
-
-/* تأثير الكتابة عند الدخول */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* تنسيق الأزرار مع تأثير الوهج */
-.glow-button {
-    background: linear-gradient(45deg, #ff00ff, #00ffff);
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    font-size: 16px;
-    border-radius: 25px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
-    transition: all 0.4s ease;
-}
-
-.glow-button:hover {
-    box-shadow: 0 0 20px rgba(255, 0, 255, 1);
-    transform: scale(1.05);
+    p {
+        font-size: 13px;
+    }
 }
