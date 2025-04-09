@@ -1,57 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="https://kit.fontawesome.com/1a721c96ab.js" crossorigin="anonymous"></script>
-    <title>About me</title>
-
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://kit.fontawesome.com/1a721c96ab.js" crossorigin="anonymous"></script>
+  <title>About Me</title>
 
 </head>
 <body>
-    <div class="background"></div> <!-- خلفية متحركة -->
-    <div class="card-container">
-        <a href="#" target="_blank">
-            <span class="pro">Accountant</span>
-          </a>
-        <img class="round" src="ping.jpg" width="170px" alt="user" />
-        <h3>HuSeEiN</h3>
-        <h6>IRAQ</h6>
-        <p>Hi My Name Is HuSeEiN AlBaYaTi<br>And I'm 21 Years old from IRAQ<br/></p>
-        <div class="buttons">
-            <a href="https://www.instagram.com/h_n_alq/" target="_blank">
-                <button class="primary ghost"> <i class="fab fa-instagram"></i> Instagram </button>
-              </a>
-
-                <button class="primary ghost" onclick="copyText()" > <i class="fab fa-discord"></i> Discord</button>
-                <script>
-                    function copyText() {
-                  
-                        navigator.clipboard.writeText("h_.n");
-                        alert('User Name has been copy')
-                    }
-                </script>
-
-              <a href="https://khamsat.com/user/huseein1" target="_blank">
-                  <button class="primary ghost"><i class="fab fa-khamsat"></i>  khamsat</button>
-              </a>
+	<video autoplay muted loop class="background-video">
+		<source src="videoplayback.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	  </video>
+	  
+  <div class="card-container">
+    <div class="left-section">
+      <span class="pro">Accountant</span>
+      <img class="round" src="ping.jpg" alt="user"/>
     </div>
-        <div class="skills">
-            <h6>Skills</h6>
-            <ul >
-                <li>Accountant</li>
-                <li>Programmer</li>
-                <li>Problem-Solving</li>
-                <li>Attention to Detail</li>
-                <li>Freelance Project Management</li>
-                <li>Adaptability & Quick Learning</li>
 
-            </ul>
-        </div>
+
+    <div class="middle-section">
+      <h3>HuSeEiN</h3>
+      <h6>IRAQ</h6>
+      <p>
+        Hi My Name Is<br/>
+        HuSeEiN AlBaYaTi<br/>
+        And I'm 21 Years old from IRAQ
+      </p>
+      <div class="skills">
+        <ul>
+          <li>Accountant</li>
+          <li>Programmer</li>
+          <li>Problem-Solving</li>
+          <li>Attention to Detail</li>
+          <li>Freelance Project Management</li>
+          <li>Adaptability & Quick Learning</li>
+        </ul>
+      </div>
     </div>
-    
-                         
 
-      
+    <div class="right-section">
+      <a href="https://www.instagram.com/h_n_alq/" target="_blank">
+        <button class="primary ghost"><i class="fab fa-instagram"></i> Instagram</button>
+      </a>
+      <button class="primary ghost" onclick="copyText()"><i class="fab fa-discord"></i> Discord</button>
+
+      <a href="https://khamsat.com/user/huseein1" target="_blank">
+        <button class="primary ghost"><i class="fas fa-store"></i> khamsat</button>
+      </a>
+	
+    </div>
+  </div>
+
+  <script>
+    function copyText() {
+      navigator.clipboard.writeText("h_.n");
+      alert('Username copied to clipboard!');
+    }
+  </script>
 </body>
 </html>
