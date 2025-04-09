@@ -127,13 +127,46 @@ body {
   gap: 15px;
 }
 
+/* تأثير عند المرور أو الضغط */
+button.primary.ghost.tiktok-btn:hover,
+button.primary.ghost.tiktok-btn:active {
+  background-color: #010101; /* لون تيك توك الأسود */
+  color: white;
+}
+
+button.primary.ghost.instagram-btn:hover,
+button.primary.ghost.instagram-btn:active {
+  background-color: #E1306C; /* لون انستقرام */
+  color: white;
+}
+
+button.primary.ghost.discord-btn:hover,
+button.primary.ghost.discord-btn:active {
+  background-color: #5865F2; /* لون ديسكورد */
+  color: white;
+}
+
+button.primary.ghost.youtube-btn:hover,
+button.primary.ghost.youtube-btn:active {
+  background-color: #FF0000; /* لون يوتيوب */
+  color: white;
+}
+
+/* خـمسات يظل كما هو */
+button.primary.ghost.khamsat-btn:hover,
+button.primary.ghost.khamsat-btn:active {
+  background-color: #28a745; /* اللون الأخضر الخاص بخمسات */
+  color: white;
+}
+
+
 button.primary.ghost {
   background: transparent;
   border: 2px solid #ffd700;
   color: #ffd700;
   padding: 10px 20px;
   border-radius: 25px;
-  font-size: 18px;
+  font-size: 15px;
   cursor: pointer;
   transition: 0.3s;
   text-align: left;
@@ -142,10 +175,7 @@ button.primary.ghost {
   gap: 8px;
 }
 
-button.primary.ghost:hover {
-  background: #ffd700;
-  color: #2e2f3e;
-}
+
 
 a {
     color: inherit;
