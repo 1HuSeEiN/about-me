@@ -3,7 +3,7 @@
 
 /* --- General Styling & Variables --- */
 :root {
-    --accent-color: #00c6ff;
+    --accent-color: #00c6ff; /* A vibrant blue */
     --text-color: #f0f0f0;
     --secondary-text: #d1d1d1;
     --glass-bg: rgba(22, 22, 22, 0.3);
@@ -39,7 +39,6 @@ body {
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-radius: 20px;
-    border: 1px solid var(--glass-border);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     transition: transform 0.3s ease;
     overflow: hidden;
@@ -49,9 +48,20 @@ body {
     transform: translateY(-10px);
 }
 
+/* --- Animated RGB Border for Card Container --- */
+/* The actual border layer */
+
+/* Ensure content is visible above the border */
+.left-column, .right-column {
+    background: var(--glass-bg); /* Re-apply background to cover parts of the RGB border */
+    position: relative; /* Create stacking context */
+    z-index: 1; /* Bring content above the RGB border */
+}
+
+
 /* --- Left Column: Image & Social Links --- */
 .left-column {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2); /* Slightly darker part for contrast */
     flex: 0 0 250px;
     padding: 40px 20px;
     display: flex;
@@ -61,19 +71,22 @@ body {
     border-radius: 20px 0 0 20px;
 }
 
+/* --- Profile Picture (No RGB animation, default styling) --- */
 .round {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 30px;
-    border: 3px solid var(--glass-border);
-    transition: transform 0.3s ease;
+    border: 3px solid var(--accent-color); /* A fixed color border */
+    box-shadow: 0 0 15px rgba(0, 198, 255, 0.4); /* Subtle glow */
+    transition: transform 0.3s ease; /* Add transition for hover effect */
 }
 
 .round:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Zoom in on hover */
 }
+
 
 .social-links {
     display: flex;
@@ -99,7 +112,7 @@ body {
     flex-grow: 1;
 }
 
-/* --- Typing Effect for Name (Unchanged) --- */
+/* --- Typing Effect for Name --- */
 .right-column h3 {
     font-family: 'Monospace', monospace;
     font-size: 32px;
@@ -123,25 +136,11 @@ body {
     margin-bottom: 20px;
 }
 
-/* --- NEW: White Shine/Bold Effect for Description --- */
 .right-column p {
     font-size: 16px;
     line-height: 1.7;
+    color: var(--secondary-text);
     margin-bottom: 30px;
-    font-weight: 500; /* Makes the base text slightly bolder */
-    
-    /* The technique for the shine effect */
-    background: linear-gradient(
-        100deg, 
-        var(--secondary-text) 30%, 
-        #ffffff 50%, 
-        var(--secondary-text) 70%
-    );
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    animation: shine-bold 4s linear infinite; /* Using a new, faster animation */
 }
 
 .skills h6 {
@@ -172,13 +171,10 @@ body {
 
 /* --- Keyframes for Animations --- */
 
-/* For the description shine/bold effect */
-@keyframes shine-bold {
-    from {
-        background-position: 200% center;
-    }
+/* For the card's rotating RGB border */
+@keyframes rotate-rgb {
     to {
-        background-position: -200% center;
+        transform: rotate(360deg);
     }
 }
 
@@ -186,8 +182,8 @@ body {
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
-    50% { width: 100% }
-    100% { width: 0 }
+    50% { width: 100% } /* Hold full width for a moment */
+    100% { width: 0 }  /* Then reset */
 }
 
 /* For the typing cursor blink */
@@ -202,6 +198,10 @@ body {
     .card-container {
         flex-direction: column;
         max-width: 400px;
+    }
+
+    .card-container::before {
+        border-radius: 20px; /* Ensure border radius is consistent */
     }
 
     .left-column {
