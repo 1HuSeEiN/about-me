@@ -1,15 +1,13 @@
 /* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Monospace');
 
-/* --- Dark Mode Color Variables --- */
+/* --- General Styling & Variables --- */
 :root {
-    --bg-color: #2c2f33; /* Dark background */
-    --card-color: #2c2f33; /* Card background matches main background */
-    --text-color: #ffffff;
-    --secondary-text-color: #a0a0a0;
-    --accent-color: #1DB954; /* A vibrant green, like Spotify */
-    --shadow-light: #3a404d; /* Lighter part of the shadow */
-    --shadow-dark: #1e2024; /* Darker part of the shadow */
+    --accent-color: #00c6ff;
+    --text-color: #f0f0f0;
+    --secondary-text: #d1d1d1;
+    --glass-bg: rgba(22, 22, 22, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -19,149 +17,140 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 30px;
-    overflow: hidden; /* Prevent scrollbar from background effects */
-}
-
-/* --- Dynamic Background Effect --- */
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.04; /* Very subtle on dark background */
-    z-index: -1;
-    filter: grayscale(100%) blur(3px);
-    transform: scale(1.05);
-}
-
-/* --- Card Container (Dark Neumorphic Style) --- */
-.card-container {
-    background: var(--card-color);
-    border-radius: 25px;
-    box-shadow: 
-        10px 10px 20px var(--shadow-dark),
-        -10px -10px 20px var(--shadow-light);
-    width: 90%;
-    max-width: 900px;
-    display: flex;
-    flex-wrap: wrap;
+    background: #141E30;
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    background: linear-gradient(to right, #243B55, #141E30);
     overflow: hidden;
+}
+
+/* --- Card Container (Glassmorphism Effect) --- */
+.card-container {
+    width: 90%;
+    max-width: 850px;
+    display: flex;
     position: relative;
-    padding: 30px;
-    transition: all 0.4s ease-in-out;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s ease;
+    overflow: hidden;
 }
 
 .card-container:hover {
-    box-shadow: 
-        15px 15px 30px var(--shadow-dark),
-        -15px -15px 30px var(--shadow-light);
-    transform: translateY(-5px);
+    transform: translateY(-10px);
 }
 
-/* --- Left Section (Image & Pro Badge) --- */
-.left-section {
-    flex: 1 1 250px;
+/* --- Left Column: Image & Social Links --- */
+.left-column {
+    background: rgba(0, 0, 0, 0.2);
+    flex: 0 0 250px;
+    padding: 40px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    position: relative;
-    margin-right: 30px;
-}
-
-.pro {
-    color: #fff;
-    background-color: var(--accent-color);
-    border-radius: 15px;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 15px;
-    margin-bottom: 25px;
-    letter-spacing: 0.8px;
-    box-shadow: 3px 3px 8px rgba(29, 185, 84, 0.2);
-    transform: perspective(1px) translateZ(0);
-    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
-}
-
-.pro:hover {
-    background-color: #25d463;
-    transform: scale(1.05);
+    border-radius: 20px 0 0 20px;
 }
 
 .round {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    padding: 8px;
-    background: linear-gradient(145deg, var(--shadow-light), var(--shadow-dark));
-    box-shadow: 
-        5px 5px 10px var(--shadow-dark) inset, 
-        -5px -5px 10px var(--shadow-light) inset;
-    transition: transform 0.4s ease-in-out;
+    margin-bottom: 30px;
+    border: 3px solid var(--glass-border);
+    transition: transform 0.3s ease;
 }
 
 .round:hover {
-    transform: scale(1.05) rotate(5deg);
+    transform: scale(1.05);
 }
 
-/* --- Middle Section (Info & Skills) --- */
-.middle-section {
-    flex: 2 1 400px;
-    padding: 20px;
-    text-align: left;
-    margin-right: 30px;
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.middle-section h3 {
-    margin: 0 0 5px;
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--text-color);
-    letter-spacing: 1.2px;
-}
-
-.middle-section h6 {
-    margin: 0 0 25px;
-    font-size: 16px;
-    text-transform: uppercase;
-    color: var(--accent-color);
-    letter-spacing: 2px;
-    font-weight: 500;
-}
-
-.middle-section p {
-    color: var(--secondary-text-color);
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 30px;
-}
-
-.skills {
-    padding: 20px;
-    background: var(--card-color);
-    border-radius: 15px;
-    box-shadow: 
-        5px 5px 10px var(--shadow-dark) inset, 
-        -5px -5px 10px var(--shadow-light) inset;
+.social-links a {
+    color: var(--secondary-text);
+    font-size: 24px;
     transition: all 0.3s ease;
 }
 
-.skills:hover {
-    box-shadow: 
-        7px 7px 15px var(--shadow-dark) inset, 
-        -7px -7px 15px var(--shadow-light) inset;
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* --- Right Column: Info & Skills --- */
+.right-column {
+    padding: 40px;
+    color: var(--text-color);
+    flex-grow: 1;
+}
+
+/* --- Typing Effect for Name (Unchanged) --- */
+.right-column h3 {
+    font-family: 'Monospace', monospace;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid var(--accent-color);
+    width: 100%;
+    animation: 
+        typing 3s steps(15) infinite, 
+        blink-caret 0.75s step-end infinite;
+}
+
+.pro {
+    display: inline-block;
+    color: var(--accent-color);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+/* --- NEW: White Shine/Bold Effect for Description --- */
+.right-column p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    font-weight: 500; /* Makes the base text slightly bolder */
+    
+    /* The technique for the shine effect */
+    background: linear-gradient(
+        100deg, 
+        var(--secondary-text) 30%, 
+        #ffffff 50%, 
+        var(--secondary-text) 70%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shine-bold 4s linear infinite; /* Using a new, faster animation */
+}
+
+.skills h6 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    color: var(--text-color);
 }
 
 .skills ul {
@@ -169,147 +158,74 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
 }
 
 .skills ul li {
-    background: var(--bg-color);
-    border-radius: 8px;
-    font-size: 13px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 14px;
     font-weight: 500;
-    padding: 8px 18px;
-    box-shadow: 
-        3px 3px 6px var(--shadow-dark), 
-        -3px -3px 6px var(--shadow-light);
-    transition: all 0.3s ease;
-    cursor: default;
-    color: var(--secondary-text-color);
+    color: var(--secondary-text);
 }
 
-.skills ul li:hover {
-    background-color: var(--accent-color);
-    color: #fff;
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-        5px 5px 10px rgba(29, 185, 84, 0.2), 
-        -5px -5px 10px rgba(58, 64, 77, 0.5);
+/* --- Keyframes for Animations --- */
+
+/* For the description shine/bold effect */
+@keyframes shine-bold {
+    from {
+        background-position: 200% center;
+    }
+    to {
+        background-position: -200% center;
+    }
 }
 
-/* --- Right Section (Buttons) --- */
-.right-section {
-    flex: 1 1 150px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+/* For the typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+    50% { width: 100% }
+    100% { width: 0 }
 }
 
-.primary {
-    background: var(--bg-color);
-    border: none;
-    border-radius: 15px;
-    color: var(--secondary-text-color);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    padding: 15px 25px;
-    width: 100%;
-    cursor: pointer;
-    box-shadow: 
-        7px 7px 15px var(--shadow-dark), 
-        -7px -7px 15px var(--shadow-light);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    gap: 12px;
+/* For the typing cursor blink */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--accent-color) }
 }
 
-.primary:hover {
-    box-shadow: 
-        inset 3px 3px 7px var(--shadow-dark), 
-        inset -3px -3px 7px var(--shadow-light);
-    color: var(--accent-color);
-    transform: scale(0.98);
-}
 
-a {
-    text-decoration: none;
-}
-
-/* --- Social Media Button Specific Styles (Hover for color) --- */
-.tiktok-btn:hover { color: #fff; }
-.instagram-btn:hover { color: #E4405F; }
-.discord-btn:hover { color: #5865F2; }
-.khamsat-btn:hover { color: #37A865; }
-.youtube-btn:hover { color: #FF0000; }
-
-/* --- Responsive Design (No changes needed here) --- */
-@media (max-width: 992px) {
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
     .card-container {
         flex-direction: column;
-        max-width: 600px;
-        padding: 25px;
+        max-width: 400px;
     }
-    .left-section, .middle-section, .right-section {
-        margin-right: 0;
-        margin-bottom: 25px;
+
+    .left-column {
+        border-radius: 20px 20px 0 0;
+        flex-basis: auto;
     }
-    .middle-section {
+
+    .round {
+        width: 120px;
+        height: 120px;
+    }
+
+    .right-column {
+        padding: 30px;
         text-align: center;
+        border-radius: 0 0 20px 20px;
     }
+
+    .right-column h3 {
+        font-size: 24px;
+        margin: 0 auto 5px;
+    }
+
     .skills ul {
         justify-content: center;
-    }
-    .right-section {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        margin-bottom: 0;
-    }
-    .primary {
-        width: 45%;
-        font-size: 14px;
-        padding: 12px 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    body {
-        padding: 15px;
-    }
-    .card-container {
-        border-radius: 20px;
-        padding: 20px;
-    }
-    .left-section, .middle-section, .right-section {
-        padding: 15px 0;
-        margin-bottom: 20px;
-    }
-    .round {
-        width: 150px;
-        height: 150px;
-    }
-    .middle-section h3 {
-        font-size: 30px;
-    }
-    .middle-section h6 {
-        font-size: 14px;
-    }
-    .middle-section p {
-        font-size: 15px;
-    }
-    .skills ul li {
-        font-size: 12px;
-        padding: 6px 12px;
-    }
-    .right-section {
-        flex-direction: column;
-    }
-    .primary {
-        width: 100%;
-        padding: 12px 15px;
     }
 }
