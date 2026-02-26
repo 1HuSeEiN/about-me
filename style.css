@@ -1,0 +1,776 @@
+        /* --- جلب الخطوط --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        /* استخدام monospace مباشرة في الـ CSS أدناه بدلاً من استدعائه كخط من جوجل */
+        /* خط عربي - اختياري لكن موصى به */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+        /* --- متغيرات الألوان الأساسية (من تصميمك الأصلي) --- */
+        :root {
+            --accent-color: #00c6ff;
+            /* A vibrant blue */
+            --text-color: #f0f0f0;
+            --secondary-text: #d1d1d1;
+            --glass-bg: rgba(22, 22, 22, 0.4);
+            /* زيادة طفيفة في الشفافية */
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --dark-bg: #141E30;
+            --gradient-bg: linear-gradient(to right, #243B55, #141E30);
+        }
+
+        /* --- تنسيقات عامة (Reset) --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+            /* تنقل سلس بين الأقسام */
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            /* إضافة الخط العربي */
+            display: flex;
+            flex-direction: column;
+            /* تغيير لإضافة الهيدر والفوتر */
+            min-height: 100vh;
+            background: var(--dark-bg);
+            background: var(--gradient-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+            /* لمنع ظهور شريط التمرير الأفقي */
+            background: linear-gradient(270deg, #141E30, #243B55);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* --- خلفية شبكية جمالية (Grid Background) --- */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.2;
+            z-index: -2;
+            /* لضمان أنها خلف كل شيء */
+        }
+
+        /* --- شريط التنقل (Header) --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--accent-color);
+        }
+
+        /* خط سفلي متحرك لروابط التنقل */
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after,
+        .nav-links li a.active::after {
+            width: 100%;
+        }
+
+
+        /* --- تنسيق الأقسام الرئيسية --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        section {
+            min-height: 90vh;
+            /* ارتفاع لملء الشاشة */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+            /* لإعطاء مساحة للهيدر الثابت */
+            position: relative;
+            z-index: 1;
+            /* لضمان المحتوى فوق الخلفية الشبكية */
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        p {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+        }
+
+
+        /* --- 1. قسم البداية (Home/Hero) --- */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* توسيط الكارد الجديد */
+            padding-top: 100px;
+            padding-bottom: 50px;
+        }
+
+        /* الكارد الجديد الذي يجمع الصورة والمعلومات */
+        .hero-card {
+            display: flex;
+            /* لترتيب الصورة والنص بجانب بعضهما */
+            flex-direction: row-reverse;
+            /* الصورة على اليسار، النص على اليمين */
+            align-items: center;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            max-width: 950px;
+            /* تحديد عرض أقصى للكارد - زيادة العرض */
+            width: 90%;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            /* لإخفاء أي جزء زائد من الصورة أو الظلال */
+            gap: 40px;
+            /* مسافة بين الصورة والمحتوى */
+        }
+
+        .hero-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .hero-image-container {
+            flex-shrink: 0;
+            /* منع الصورة من الانكماش */
+            width: 280px;
+            /* عرض الصورة داخل الكارد */
+            height: 280px;
+            /* ارتفاع الصورة لجعلها مربعة */
+            border-radius: 15px;
+            /* حواف مستديرة للصورة */
+            overflow: hidden;
+            /* لضمان أن الصورة لا تتجاوز الحدود */
+            border: 5px solid var(--accent-color);
+            /* إطار أزرق */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+            position: relative;
+            /* لتحديد نقطة تحول الصورة */
+        }
+
+        .hero-image-container:hover {
+            transform: scale(1.05) rotate(-3deg);
+            /* حركة عند التحويم */
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* لملء الصورة للمساحة المخصصة */
+            display: block;
+        }
+
+        .hero-info-content {
+            flex-grow: 1;
+            /* للسماح للمحتوى بأخذ المساحة المتبقية */
+            text-align: right;
+            /* المحتوى على اليمين */
+        }
+
+        .hero-info-content h1 {
+            font-family: 'Poppins', sans-serif;
+            /* تغيير الخط لاسمك */
+            font-size: 3.5rem;
+            /* حجم كبير للاسم */
+            font-weight: 700;
+            /* خط سميك */
+            margin-bottom: 10px;
+            color: var(--text-color);
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* تأثير الكتابة للقب */
+        .hero-info-content .subtitle {
+            font-family: 'Monospace', monospace;
+            /* خط Monospace للقب */
+            font-size: 1.8rem;
+            /* تكبير الخط قليلاً */
+            color: var(--accent-color);
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            display: inline-block;
+            /* ليعمل تأثير الكتابة */
+            overflow: hidden;
+            white-space: nowrap;
+            border-left: 3px solid var(--accent-color);
+            width: 0;
+            /* يبدأ مخفياً */
+            animation:
+                typing 2s steps(20) forwards,
+                /* مدة أقصر لتأثير الكتابة */
+                blink-caret 0.75s step-end infinite;
+            animation-delay: 1s;
+            /* يبدأ بعد ظهور الاسم */
+            animation-fill-mode: forwards;
+            /* يحافظ على الحالة النهائية للأنيميشن */
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--accent-color)
+            }
+        }
+
+        .hero-info-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            /* زيادة المسافة */
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 2.5s;
+            /* يبدأ بعد اللقب */
+            animation-fill-mode: forwards;
+            opacity: 0;
+            /* يبدأ مخفياً */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            padding: 14px 35px;
+            /* تكبير الزر */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            /* تكبير الخط */
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.3);
+            margin-top: 20px;
+            /* زيادة المسافة */
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 3s;
+            /* يبدأ بعد الوصف */
+            animation-fill-mode: forwards;
+            opacity: 0;
+            /* يبدأ مخفياً */
+        }
+
+        .cta-button:hover {
+            transform: translateY(-7px) scale(1.02);
+            /* حركة وتكبير */
+            box-shadow: 0 12px 25px rgba(0, 198, 255, 0.6);
+            background: #00e0ff;
+            /* لون أزرق أفتح قليلاً */
+        }
+
+        /* تأثير ظهور عام للعناصر */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- 2. قسم "عني" (About) --- */
+        #about {
+            background: rgba(0, 0, 0, 0.1);
+            /* خلفية خفيفة للقسم */
+            padding-bottom: 80px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            /* زيادة المسافة */
+            align-items: center;
+            background: var(--glass-bg);
+            /* خلفية زجاجية للقسم */
+            padding: 50px;
+            /* زيادة البادينج */
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-8px);
+        }
+
+        /* تنسيق المهارات (من تصميمك الأصلي) */
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .skills ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            /* زيادة المسافة بين المهارات */
+            justify-content: center;
+            /* توسيط المهارات */
+        }
+
+        .skills ul li {
+            background: rgba(0, 0, 0, 0.3);
+            /* خلفية أغمق قليلاً */
+            border: 1px solid rgba(0, 198, 255, 0.4);
+            /* إطار أزرق فاتح */
+            border-radius: 8px;
+            /* حواف أكثر استدارة */
+            padding: 10px 18px;
+            /* زيادة البادينج */
+            font-size: 15px;
+            /* تكبير الخط */
+            font-weight: 500;
+            color: var(--secondary-text);
+            transition: all 0.3s ease;
+        }
+
+        .skills ul li:hover {
+            background: var(--accent-color);
+            color: var(--dark-bg);
+            transform: translateY(-5px) scale(1.05);
+            /* حركة وتكبير */
+            box-shadow: 0 8px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        /* --- 3. قسم "أعمالي" (Portfolio) --- */
+        #portfolio {
+            padding-bottom: 80px;
+        }
+
+        #portfolio .container {
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            /* زيادة المسافة */
+            margin-top: 50px;
+            /* زيادة المسافة */
+        }
+
+        .project-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            /* حواف أكثر استدارة */
+            overflow: hidden;
+            transition: all 0.4s ease;
+            /* حركة أبطأ وأكثر سلاسة */
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            /* حركة وتكبير */
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-color);
+            /* إطار أزرق عند التحويم */
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 220px;
+            /* زيادة ارتفاع الصورة */
+            object-fit: cover;
+            background-color: #334;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+            /* تكبير خفيف للصورة داخل البطاقة */
+        }
+
+        .project-info {
+            padding: 30px;
+            /* زيادة البادينج */
+            text-align: right;
+        }
+
+        .project-info h3 {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .project-info p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .project-info a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            /* لجعل الأيقونة والنص في سطر واحد */
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .project-info a:hover {
+            text-decoration: underline;
+            color: #00e0ff;
+            transform: translateX(-5px);
+            /* حركة خفيفة لليسار */
+        }
+
+        /* --- 4. قسم "اتصل بي" (Contact) --- */
+        #contact {
+            padding-bottom: 80px;
+        }
+
+        #contact .container {
+            text-align: center;
+            max-width: 600px;
+            background: var(--glass-bg);
+            padding: 50px;
+            /* زيادة البادينج */
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        #contact .container:hover {
+            transform: translateY(-8px);
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+        }
+
+        /* تنسيق روابط التواصل (من تصميمك الأصلي) */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            /* زيادة المسافة */
+            margin-top: 40px;
+            /* زيادة المسافة */
+        }
+
+        .social-links a {
+            color: var(--secondary-text);
+            font-size: 36px;
+            /* تكبير الأيقونات أكثر */
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: scale(1.3) translateY(-7px);
+            /* حركة وتكبير أكثر */
+            text-shadow: 0 0 15px var(--accent-color);
+            /* توهج خفيف */
+        }
+
+        /* --- 5. الفوتر (Footer) --- */
+        .main-footer {
+            text-align: center;
+            padding: 25px;
+            /* زيادة البادينج */
+            background: rgba(0, 0, 0, 0.3);
+            /* خلفية أغمق قليلاً */
+            border-top: 1px solid var(--glass-border);
+            margin-top: 50px;
+            font-size: 15px;
+        }
+
+        .main-footer p {
+            margin: 0;
+            color: var(--secondary-text);
+        }
+
+        /* --- تنسيقات للهواتف (Responsive) --- */
+        @media (max-width: 992px) {
+
+            /* تعديل نقطة التوقف لتشمل التابلت */
+            .main-header {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+                /* يمكن استبدالها بـ "برجر منيو" لاحقاً إذا أردت */
+            }
+
+            .logo {
+                text-align: center;
+                width: 100%;
+            }
+
+            section {
+                padding-top: 80px;
+                min-height: auto;
+                padding-bottom: 40px;
+            }
+
+            #home {
+                padding-top: 80px;
+                padding-bottom: 30px;
+            }
+
+            .hero-card {
+                flex-direction: column;
+                /* الصورة فوق النص في الجوال */
+                padding: 30px;
+                max-width: 400px;
+                gap: 30px;
+            }
+
+            .hero-image-container {
+                margin-right: 0;
+                /* إلغاء الهامش الأيمن */
+                margin-bottom: 0;
+                /* إلغاء الهامش السفلي */
+                width: 200px;
+                /* تصغير الصورة في الجوال */
+                height: 200px;
+                order: 1;
+                /* جعل الصورة تظهر بعد المحتوى في الجوال */
+            }
+
+            .hero-info-content {
+                text-align: center;
+                /* توسيط النص في الجوال */
+                order: 2;
+                /* جعل المحتوى يظهر قبل الصورة في الجوال */
+            }
+
+            .hero-info-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-info-content .subtitle {
+                font-size: 1.3rem;
+            }
+
+            .hero-info-content p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                /* عمود واحد في الجوال */
+                text-align: center;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .skills ul {
+                justify-content: center;
+            }
+
+            .project-card {
+                text-align: center;
+            }
+
+            .project-info {
+                text-align: center;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-links a {
+                font-size: 30px;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            text-align: center;
+            border-radius: 8px;
+            padding: 16px;
+            position: fixed;
+            z-index: 10000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+            opacity: 0;
+            transition: opacity 0.3s, bottom 0.3s, visibility 0.3s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 50px;
+        }
+
+        /* Particles Container */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* خلف المحتوى ولكن فوق الخلفية */
+            pointer-events: none;
+            /* للسماح بالنقر على العناصر خلفه */
+        }
+
+        /* Scroll to Top Button */
+        #scrollTopBtn {
+            display: none;
+            /* مخفي افتراضياً */
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            font-size: 20px;
+            border: none;
+            outline: none;
+            background-color: var(--accent-color);
+            color: var(--dark-bg);
+            cursor: pointer;
+            padding: 12px 18px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 198, 255, 0.4);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #00e0ff;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.6);
+        }
