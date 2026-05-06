@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="dark">
 
 <head>
     <meta charset="UTF-8" />
@@ -29,6 +29,16 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <h1 class="loader-text" data-text="HuSeEiN">HuSeEiN</h1>
+        </div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress"></div>
+
     <!-- Scroll to Top Button -->
     <button onclick="scrollToTop()" id="scrollTopBtn" title="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
@@ -41,11 +51,17 @@
     <header class="main-header">
         <a href="#home" class="logo"><span>HuSeEiN</span> AlBaYaTi</a>
         <ul class="nav-links">
-            <li><a href="#home" class="active">الرئيسية</a></li>
-            <li><a href="#about">عني</a></li>
-            <li><a href="#portfolio">أعمالي</a></li>
-            <li><a href="#contact">تواصل معي</a></li>
+            <li><a href="#home" class="active" data-i18n="nav_home">الرئيسية</a></li>
+            <li><a href="#about" data-i18n="nav_about">عني</a></li>
+            <li><a href="#portfolio" data-i18n="nav_portfolio">أعمالي</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">تواصل معي</a></li>
         </ul>
+        <div class="header-actions">
+            <div class="lang-toggle" id="lang-toggle" title="تبديل اللغة / Change Language">EN</div>
+            <div class="theme-toggle" id="theme-toggle" title="تبديل الوضع">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -55,39 +71,39 @@
                     <img src="ping.jpg" alt="صورة حسين البياتي">
                 </div>
                 <div class="hero-info-content">
-                    <h1>HuSeEiN AlBaYaTi</h1>
-                    <p class="subtitle">محاسب ومبرمج</p>
-                    <p>
+                    <h1>HuSeEiNAlBaYaTi</h1>
+                    <p class="subtitle"><span id="typewriter"></span><span class="type-cursor"></span></p>
+                    <p data-i18n="hero_desc">
                         مرحباً! أنا حسين، 21 عاماً من العراق، لدي شغف بالأرقام والأكواد.
                         أنا متخصص في البرمجة و محاسب مستقبلي.
                     </p>
-                    <a href="#portfolio" class="cta-button">شاهد أعمالي <i class="fas fa-arrow-down"
-                            style="margin-right: 5px;"></i></a>
+                    <a href="#portfolio" class="cta-button"><span data-i18n="hero_btn">شاهد أعمالي</span> <i class="fas fa-arrow-down"
+                            style="margin-right: 5px; margin-left: 5px;"></i></a>
                 </div>
             </div>
         </section>
 
         <section id="about" data-aos="fade-up" data-aos-duration="1000">
             <div class="container">
-                <div class="about-content">
+                <div class="about-content" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
                     <div class="about-text">
-                        <h2>من أنا؟</h2>
-                        <p>كمحاسب ومبرمج، أتمتع بنظرة فريدة تجمع بين الدقة المالية والابتكار التقني. أسعى دائمًا لتطوير
+                        <h2 data-i18n="about_title">من أنا؟</h2>
+                        <p data-i18n="about_p1">كمحاسب ومبرمج، أتمتع بنظرة فريدة تجمع بين الدقة المالية والابتكار التقني. أسعى دائمًا لتطوير
                             حلول برمجية ذكية تساعد في تبسيط العمليات المعقدة، سواء كانت مالية أو إدارية.</p>
-                        <p>أنا أؤمن بالتعلم المستمر وأستمتع بمواكبة أحدث التقنيات. في أوقات فراغي، أستمتع بتطوير مشاريعي
+                        <p data-i18n="about_p2">أنا أؤمن بالتعلم المستمر وأستمتع بمواكبة أحدث التقنيات. في أوقات فراغي، أستمتع بتطوير مشاريعي
                             الخاصة والمساهمة في مجتمعات المصادر المفتوحة.</p>
                     </div>
 
                     <div class="skills">
-                        <h2>مهاراتي</h2>
+                        <h2 data-i18n="skills_title">مهاراتي</h2>
                         <ul>
-                            <li>حل المشكلات</li>
-                            <li>الانتباه للتفاصيل</li>
-                            <li>إدارة المشاريع المستقلة</li>
-                            <li>القدرة على التكيف</li>
-                            <li>التعلم السريع</li>
-                            <li>Python (بايثون)</li>
-                            <li>Tkinter (واجهات رسومية)</li>
+                            <li data-i18n="skill_1">حل المشكلات</li>
+                            <li data-i18n="skill_2">الانتباه للتفاصيل</li>
+                            <li data-i18n="skill_3">إدارة المشاريع المستقلة</li>
+                            <li data-i18n="skill_4">القدرة على التكيف</li>
+                            <li data-i18n="skill_5">التعلم السريع</li>
+                            <li>Python</li>
+                            <li>Tkinter</li>
                             <li>HTML & CSS</li>
                         </ul>
                     </div>
@@ -95,52 +111,144 @@
             </div>
         </section>
 
+        <!-- Interactive CV Section -->
+        <section id="resume" data-aos="fade-up" data-aos-duration="1000">
+            <div class="container">
+                <h2 data-i18n="cv_title">السيرة الذاتية</h2>
+                <p data-i18n="cv_desc">ملخص لرحلتي التعليمية والمهنية في عالم الأرقام والبرمجة.</p>
+                
+                <div class="resume-content">
+                    <div class="resume-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="resume-header">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h3 data-i18n="cv_edu_title">التعليم</h3>
+                        </div>
+                        <ul class="resume-list">
+                            <li>
+                                <h4 data-i18n="cv_edu_1">بكالوريوس محاسبة</h4>
+                                <span class="resume-date" data-i18n="cv_edu_1_date">2024 - الحاضر</span>
+                                <p data-i18n="cv_edu_1_desc">دراسة التخصص المالي والإداري مع التركيز على التحليل المالي.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="resume-card" data-tilt data-tilt-max="5" data-tilt-speed="400">
+                        <div class="resume-header">
+                            <i class="fas fa-briefcase"></i>
+                            <h3 data-i18n="cv_exp_title">الخبرات البرمجية</h3>
+                        </div>
+                        <ul class="resume-list">
+                            <li>
+                                <h4 data-i18n="cv_exp_1">مطور بوتات ديسكورد</h4>
+                                <span class="resume-date" data-i18n="cv_exp_1_date">2021 - الحاضر</span>
+                                <p data-i18n="cv_exp_1_desc">برمجة بوتات متقدمة لإدارة السيرفرات ونشر الإعلانات باستخدام Python.</p>
+                            </li>
+                            <li>
+                                <h4 data-i18n="cv_exp_2">مطور أدوات أتمتة</h4>
+                                <span class="resume-date" data-i18n="cv_exp_2_date">2022 - الحاضر</span>
+                                <p data-i18n="cv_exp_2_desc">إنشاء سكربتات وبرامج مكتبية (Desktop Apps) لأتمتة المهام اليومية باستخدام Tkinter.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="resume-download">
+                    <a href="huseein cv.pdf" target="_blank" download="HuSeEiN_AlBaYaTi_CV.pdf" class="cta-button">
+                        <i class="fas fa-file-pdf" style="margin-right: 8px;"></i>
+                        <span data-i18n="cv_download_btn">تحميل السيرة الذاتية</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <section id="portfolio">
             <div class="container">
-                <h2>أبرز أعمالي</h2>
-                <p>هنا مجموعة من المشاريع التي عملت عليها.</p>
+                <h2 data-i18n="portfolio_title">أبرز أعمالي</h2>
+                <p data-i18n="portfolio_desc">هنا مجموعة من المشاريع التي عملت عليها.</p>
 
                 <div class="portfolio-grid">
-                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100">
-                        <img src="bot.png" alt="واجهة بوت صناعة التقارير على تيليجرام" loading="lazy">
+                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="100" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <div class="project-card-img-container">
+                            <img src="bot.png" alt="واجهة بوت صناعة التقارير على تيليجرام" loading="lazy">
+                        </div>
                         <div class="project-info">
-                            <h3>بوت صناعة واجهة تقارير</h3>
-                            <p> إنشاء تقارير احترافية مجانًا وبدون إعلانات سريع، سهل، يدعم PDF والصور واكثر من 100 واجهة
+                            <h3 data-i18n="proj1_title">بوت صناعة واجهة تقارير</h3>
+                            <p data-i18n="proj1_desc"> إنشاء تقارير احترافية مجانًا وبدون إعلانات سريع، سهل، يدعم PDF والصور واكثر من 100 واجهة
                                 يوميا</p>
-                            <a href="https://t.me/InstantReportsBot" target="_blank">رابط البوت <i
-                                    class="fas fa-external-link-alt"></i></a>
+                            <div class="project-actions">
+                                <a href="https://t.me/InstantReportsBot" target="_blank"><span data-i18n="btn_bot_link">رابط البوت</span> <i class="fas fa-external-link-alt"></i></a>
+                                <button class="details-btn" onclick="openModal('proj1_title', 'proj1_modal_desc', 'bot.png', 'https://t.me/InstantReportsBot')"><span data-i18n="btn_details">تفاصيل</span> <i class="fas fa-info-circle"></i></button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200">
-                        <img src="reports.png" alt="واجهة أداة إنشاء التقارير والبحوث بالذكاء الاصطناعي" loading="lazy">
+                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="200" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <div class="project-card-img-container">
+                            <img src="reports.png" alt="واجهة أداة إنشاء التقارير والبحوث بالذكاء الاصطناعي" loading="lazy">
+                        </div>
                         <div class="project-info">
-                            <h3>اداة للانشاء التقارير والبحوث</h3>
-                            <p>برنامج خاص لانشاء التقارير والبحوث كاملة بأستخدام الذكاء الاصطناعي مع المصادر او بدون
+                            <h3 data-i18n="proj2_title">اداة للانشاء التقارير والبحوث</h3>
+                            <p data-i18n="proj2_desc">برنامج خاص لانشاء التقارير والبحوث كاملة بأستخدام الذكاء الاصطناعي مع المصادر او بدون
                                 وبلغتين العربية والانكليزية</p>
-                            <a href="https://www.instagram.com/h_n_alq/" target="_blank">للطلب تقرير التواصل انستا <i
-                                    class="fab fa-instagram"></i></a>
+                            <div class="project-actions">
+                                <a href="https://www.instagram.com/h_n_alq/" target="_blank"><span data-i18n="btn_contact_insta">تواصل انستا</span> <i class="fab fa-instagram"></i></a>
+                                <button class="details-btn" onclick="openModal('proj2_title', 'proj2_modal_desc', 'reports.png', 'https://www.instagram.com/h_n_alq/')"><span data-i18n="btn_details">تفاصيل</span> <i class="fas fa-info-circle"></i></button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300">
-                        <img src="discord.png" alt="شعار بوت نشر السيرفرات على ديسكورد" loading="lazy">
+                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="300" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <div class="project-card-img-container">
+                            <img src="discord.png" alt="شعار بوت نشر السيرفرات على ديسكورد" loading="lazy">
+                        </div>
                         <div class="project-info">
-                            <h3>ADS Bot</h3>
-                            <p>بوت مخصص للنشر السيرفرات حول العالم بشكل مجاني وبدون اي اعلانات وسريع وسهل الاستخدام</p>
-                            <a href="https://top.gg/bot/905790179732783104" target="_blank"> رابط البوت <i
-                                    class="fas fa-external-link-alt"></i></a>
+                            <h3 data-i18n="proj3_title">ADS Bot</h3>
+                            <p data-i18n="proj3_desc">بوت مخصص للنشر السيرفرات حول العالم بشكل مجاني وبدون اي اعلانات وسريع وسهل الاستخدام</p>
+                            <div class="project-actions">
+                                <a href="https://top.gg/bot/905790179732783104" target="_blank"><span data-i18n="btn_bot_link">رابط البوت</span> <i class="fas fa-external-link-alt"></i></a>
+                                <button class="details-btn" onclick="openModal('proj3_title', 'proj3_modal_desc', 'discord.png', 'https://top.gg/bot/905790179732783104')"><span data-i18n="btn_details">تفاصيل</span> <i class="fas fa-info-circle"></i></button>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400">
-                        <img src="ava.png" alt="برنامج تحميل الفيديوهات من يوتيوب" loading="lazy">
-                        <div class="project-info">
-                            <h3>Youtube Downloader</h3>
-                            <p>برنامج لتحميل الفيديوهات من اليوتيوب بجودة عالية وسريع وبدون اعلانات ويدعم تحميل الصوت
-                                فقط او الفيديو كامل</p>
-                            <a href="https://www.up-4ever.net/y8akvpzlx36u" target="_blank"> رابط البرنامج <i
-                                    class="fas fa-external-link-alt"></i></a>
+                    <div class="project-card" data-aos="flip-left" data-aos-duration="1000" data-aos-delay="400" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.3">
+                        <div class="project-card-img-container">
+                            <img src="ava.png" alt="برنامج تحميل الفيديوهات من يوتيوب" loading="lazy">
                         </div>
+                        <div class="project-info">
+                            <h3 data-i18n="proj4_title">Youtube Downloader</h3>
+                            <p data-i18n="proj4_desc">برنامج لتحميل الفيديوهات من اليوتيوب بجودة عالية وسريع وبدون اعلانات ويدعم تحميل الصوت
+                                فقط او الفيديو كامل</p>
+                            <div class="project-actions">
+                                <a href="https://www.up-4ever.net/y8akvpzlx36u" target="_blank"><span data-i18n="btn_app_link">رابط البرنامج</span> <i class="fas fa-external-link-alt"></i></a>
+                                <button class="details-btn" onclick="openModal('proj4_title', 'proj4_modal_desc', 'ava.png', 'https://www.up-4ever.net/y8akvpzlx36u')"><span data-i18n="btn_details">تفاصيل</span> <i class="fas fa-info-circle"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hussein-Bot Section (Embedded) -->
+        <section id="chatbot-section" data-aos="fade-up" data-aos-duration="1000">
+            <div class="container">
+                <h2 data-i18n="chat_section_title">المساعد الذكي</h2>
+                <p data-i18n="chat_section_desc">تحدث مع المساعد الذكي الخاص بي لمعرفة المزيد عن خدماتي وأسعاري.</p>
+                
+                <div class="chatbot-embedded" data-tilt data-tilt-max="2" data-tilt-speed="400">
+                    <div class="chat-header">
+                        <div>
+                            <i class="fas fa-robot"></i> <span data-i18n="chat_title">HusseinBot</span>
+                        </div>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <span data-i18n="chat_welcome">أهلاً بك! أنا المساعد الذكي لحسين. كيف يمكنني مساعدتك؟</span>
+                        </div>
+                    </div>
+                    <div class="chat-options">
+                        <button onclick="sendChatMessage('price', 'chat_q1')" data-i18n="chat_q1">ما هي أسعارك لبرمجة البوتات؟</button>
+                        <button onclick="sendChatMessage('services', 'chat_q2')" data-i18n="chat_q2">ما هي الخدمات التي تقدمها؟</button>
+                        <button onclick="sendChatMessage('contact', 'chat_q3')" data-i18n="chat_q3">كيف يمكنني التواصل معك للعمل؟</button>
                     </div>
                 </div>
             </div>
@@ -148,13 +256,15 @@
 
         <section id="contact" data-aos="zoom-in" data-aos-duration="1000">
             <div class="container">
-                <h2>تواصل معي</h2>
-                <p>
+                <h2 data-i18n="contact_title">تواصل معي</h2>
+                <p data-i18n="contact_desc">
                     هل لديك مشروع أو فرصة عمل؟ أو ترغب فقط في مناقشة فكرة؟
                     يمكنك إيجادي على المنصات التالية.
                 </p>
 
                 <div class="social-links">
+                    <a href="https://wa.me/9647817886273" target="_blank" title="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
                     <a href="https://www.tiktok.com/@h_n_alq" target="_blank" title="TikTok"><i
                             class="fab fa-tiktok"></i></a>
                     <a href="https://www.instagram.com/h_n_alq/" target="_blank" title="Instagram"><i
@@ -171,12 +281,25 @@
 
     </main>
 
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="Project Image">
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
+            <a id="modal-link" href="#" target="_blank" class="cta-button"><span data-i18n="btn_visit_project">زيارة المشروع</span> <i class="fas fa-external-link-alt" style="margin-right: 5px; margin-left: 5px;"></i></a>
+        </div>
+    </div>
+
     <footer class="main-footer">
-        <p>جميع الحقوق محفوظة &copy; 2025 - HuSeEiN AlBaYaTi</p>
+        <p><span data-i18n="footer_rights">جميع الحقوق محفوظة</span> &copy; 2026 - HuSeEiN AlBaYaTi</p>
     </footer>
 
-    <!-- تضمين سคريبت مكتبة AOS -->
+    <!-- تضمين سكريبت مكتبة AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- مكتبة Vanilla-tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
     <script src="script.js"></script>
 </body>
 
